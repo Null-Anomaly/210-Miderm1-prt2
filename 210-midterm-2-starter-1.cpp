@@ -1,4 +1,10 @@
+/*COMSC 210 | Midterm 1 Part 2| Lawrence Bryant
+IDE used: Visual Studio Code*/
 #include <iostream>
+#include <stdio.h>      
+#include <stdlib.h> 
+#include <time.h>
+#include <fstream>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -203,9 +209,26 @@ public:
     }
 };
 
-int main() {
+int main() 
+{
+    srand(time(NULL));
+
+    ifstream fin("names.txt");
+
+    if(fin.good())
+    {
+        DoublyLinkedList customers;
+
+        for(int i = 0; i < 5; i++)
+        {
+            
+        }
+    }
+
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
+    
+    
     
     return 0;
 }
