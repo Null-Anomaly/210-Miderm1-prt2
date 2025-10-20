@@ -277,6 +277,7 @@ int main()
                 totalLine.resize(totalLine.size()+1);
                 totalLine[totalLine.size() - 1] = tempn;
                 fin.close();
+                cout << tempn << " joined the line";
             }
 
             //Leaves the line before being served
@@ -285,12 +286,30 @@ int main()
             {
                 storeIn = rand() % totalLine.size();
                 customers.delete_pos(storeIn);
+                cout << totalLine[]
                 totalLine.erase(totalLine.begin() + storeIn);
+                
             }
 
             //VIP customer joins the line
             vip = rand() % 100 + 1;
-            if(vip <= )
+            if(vip <= 10)
+            {
+                fin.open("names.txt");
+                storeIn = rand() % 100 + 1;
+                customers.push_front(storeIn);
+                for(int j = 0; j < storeIn; j++)
+                {
+                    getline(fin,tempn);
+                }
+                totalLine.resize(totalLine.size()+1);
+                for(int j = 0; j < totalLine.size()-1; j++)
+                {
+                    totalLine[j+1] = totalLine[j];
+                }
+                totalLine[0] = tempn;
+                fin.close();
+            }
 
 
 
