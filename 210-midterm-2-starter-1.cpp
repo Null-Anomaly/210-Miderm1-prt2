@@ -217,29 +217,36 @@ int main()
 
     if(fin.good())//Just checks if the file input is good
     {
+        fin.close();//This immediately closes the file so I can begin the most scuffed
+                    //File input of all time.
+
+        //First set of customers variable.
         DoublyLinkedList customers;
         string tempn;
         int storeOpen;
+        string totalLine = "    ";
+
         cout << "Store opens:\n";
         for(int i = 0; i < 5; i++)//Creates the first five customers based on the line their name is in
         {
             storeOpen = rand() % 100 + 1;
             customers.push_back(storeOpen);
-            fin.open("names.txt");
+            fin.open("names.txt"); //Opens the file back up from the start each time
             for(int j = 0; j < storeOpen; j++)
             {
                 getline(fin, tempn);
             }
             cout << "   " << tempn << " joins the line\n";
-            fin.close();
+            totalLine += tempn + "\n        "; //Keeps track of the line.
+            fin.close(); //Hard resets the file.
         }
+        cout << "   Resulting line:\n" << totalLine;
 
-        cout << "   Resulting line:\n";
-        /*for(int i = 0; i < 5; i++)
-        {
-            for(int j = 0; j < )
-        }*/
-
+        //Now the big main loop
+        
+        //Variables needed to keep track of things
+        int vip;
+        int newCustomer;
         
     }
 
