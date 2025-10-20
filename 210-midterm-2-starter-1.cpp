@@ -5,6 +5,7 @@ IDE used: Visual Studio Code*/
 #include <stdlib.h> 
 #include <time.h>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -224,7 +225,7 @@ int main()
         DoublyLinkedList customers;
         string tempn;
         int storeOpen;
-        string totalLine = "    ";
+        vector<string> totalLine;
 
         cout << "Store opens:\n";
         for(int i = 0; i < 5; i++)//Creates the first five customers based on the line their name is in
@@ -237,10 +238,15 @@ int main()
                 getline(fin, tempn);
             }
             cout << "   " << tempn << " joins the line\n";
-            totalLine += tempn + "\n        "; //Keeps track of the line.
+            
+            totalLine[i] = tempn; //Keeps track of the line of names.
             fin.close(); //Hard resets the file.
         }
-        cout << "   Resulting line:\n" << totalLine;
+        cout << "   Resulting line:\n";
+        for(int i = 0; i < totalLine.size(); i++)
+        {
+            cout << "   " << totalLine[i] << "\n";
+        }
 
         //Now the big main loop
         
@@ -256,11 +262,19 @@ int main()
         {
             cout << "Time step #" << i;
 
+
+            //Joined the line
+
+
+
+
+
+
             //Served customer
             served = rand() % 100 + 1;
             if(served <= 40)
             {
-                totalLine -=  ;
+                
             }
 
         }
