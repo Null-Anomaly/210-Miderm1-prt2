@@ -218,9 +218,11 @@ int main()
     if(fin.good())
     {
         DoublyLinkedList customers;
-
+        string tempn;
         for(int i = 0; i < 5; i++)
         {
+            int storeOpen = rand() % 99 + 1;
+            customers.push_back(storeOpen);
             
         }
     }
