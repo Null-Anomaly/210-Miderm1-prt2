@@ -306,17 +306,17 @@ int main()
             {
                 fin.open("names.txt");
                 storeIn = rand() % 100 + 1;
-                customers.push_front(storeIn);
                 for(int j = 0; j < storeIn; j++)
                 {
                     getline(fin,tempn);
                 }
-                totalLine.resize(totalLine.size()+1);
+                customers.push_front(tempn);
+                /*totalLine.resize(totalLine.size()+1);
                 for(int j = 0; j < totalLine.size()-1; j++)
                 {
                     totalLine[j+1] = totalLine[j];
                 }
-                totalLine[0] = tempn;
+                totalLine[0] = tempn;*/
                 fin.close();
                 cout <<"    "<< tempn << " (VIP) joins the front of the line\n";
             }
@@ -325,30 +325,32 @@ int main()
             served = rand() % 100 + 1;
             if(served <= 40)
             {
-                cout << totalLine[0] << " is served\n";
+                cout <<"The customer at the front of the line is served" << "\n";
                 customers.pop_front();
-                for(int j = 0; j < totalLine.size() - 1; j++)
+
+//This runs into the issue of printing/returning a specific position
+
+               /* for(int j = 0; j < totalLine.size() - 1; j++)
                 {
                     totalLine[j] = totalLine[j+1];
                 }
-                totalLine.resize(totalLine.size()-1);
+                totalLine.resize(totalLine.size()-1);*/
             }
 
             //Rear of the line leaves
             bored = rand() % 100 + 1;
             if(bored <= 20)
             {
-                cout <<"    " <<totalLine[totalLine.size()-1] << " (the rear) left the line";
+                //cout <<"    " <<totalLine[totalLine.size()-1] << " (the rear) left the line";
+                cout <<"    the rear left the line";
+//Similar issue as prior
                 customers.pop_back();
-                totalLine.pop_back();
+                //totalLine.pop_back();
             }
 
             //Final Line output
             cout << "   Resulting line:\n";
-            for(int j = 0; j < totalLine.size(); j++)
-            {
-                cout <<"    " << totalLine[j] << "\n";
-            }
+            customers.print();
 
         }
     }
