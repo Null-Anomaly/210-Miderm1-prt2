@@ -223,20 +223,22 @@ int main()
         cout << "Store opens:\n";
         for(int i = 0; i < 5; i++)//Creates the first five customers based on the line their name is in
         {
-            storeOpen = rand() % 99 + 1;
+            storeOpen = rand() % 100 + 1;
             customers.push_back(storeOpen);
+            fin.open("names.txt");
             for(int j = 0; j < storeOpen; j++)
             {
                 getline(fin, tempn);
             }
             cout << "   " << tempn << " joins the line\n";
+            fin.close();
         }
 
         cout << "   Resulting line:\n";
-        for(int i = 0; i < 5; i++)
+        /*for(int i = 0; i < 5; i++)
         {
             for(int j = 0; j < )
-        }
+        }*/
 
         
     }
