@@ -13,10 +13,10 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        string data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(string val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
             next = n;
@@ -29,7 +29,7 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void insert_after(int value, int position) {
+    void insert_after(string value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
@@ -60,7 +60,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_val(int value) {
+    void delete_val(string value) {
         if (!head) return;
 
         Node* temp = head;
@@ -120,7 +120,7 @@ public:
         delete temp;
     }
 
-    void push_back(int v) {
+    void push_back(string v) {
         Node* newNode = new Node(v);
         if (!tail)
             head = tail = newNode;
@@ -131,7 +131,7 @@ public:
         }
     }
     
-    void push_front(int v) {
+    void push_front(string v) {
         Node* newNode = new Node(v);
         if (!head)
             head = tail = newNode;
@@ -225,28 +225,27 @@ int main()
         DoublyLinkedList customers;
         string tempn;
         int storeIn;
-        vector<string> totalLine;
+        //vector<string> totalLine;
 
         cout << "Store opens:\n";
         for(int i = 0; i < 5; i++)//Creates the first five customers based on the line their name is in
         {
             storeIn = rand() % 100 + 1;
-            customers.push_back(storeIn);
+            
             fin.open("names.txt"); //Opens the file back up from the start each time
             for(int j = 0; j < storeIn; j++)
             {
                 getline(fin, tempn);
             }
             cout << "   " << tempn << " joins the line\n";
-            totalLine.resize(totalLine.size()+1);
-            totalLine[i] = tempn; //Keeps track of the line of names.
+            customers.push_back(tempn);
+            
+            //totalLine.resize(totalLine.size()+1);
+            //totalLine[i] = tempn; //Keeps track of the line of names.
             fin.close(); //Hard resets the file.
         }
         cout << "   Resulting line:\n";
-        for(int i = 0; i < totalLine.size(); i++)
-        {
-            cout << "   " << totalLine[i] << "\n";
-        }
+        customers.print();
 
         //Now the big main loop
         
@@ -257,6 +256,7 @@ int main()
         int bored;
         int boredInLine;
         
+        int customerNum = 5;
 
         for(int i = 2; i < 21; i++)
         {
@@ -269,26 +269,35 @@ int main()
             {
                 fin.open("names.txt");
                 storeIn = rand() % 100 + 1;
-                customers.push_back(storeIn);
+                
                 for(int j = 0; j < storeIn; j++)
                 {
                     getline(fin,tempn);
                 }
-                totalLine.resize(totalLine.size()+1);
-                totalLine[totalLine.size() - 1] = tempn;
+                customers.push_back(tempn);
+                //totalLine.resize(totalLine.size()+1);
+                //totalLine[totalLine.size() - 1] = tempn;
                 fin.close();
                 cout <<"    "<< tempn << " joined the line\n";
+                customerNum++;
             }
 
             //Leaves the line before being served
             boredInLine = rand() % 100 + 1;
             if(boredInLine <= 10)
             {
-                storeIn = rand() % totalLine.size();
+                storeIn = rand() % customerNum + 1;
                 customers.delete_pos(storeIn);
-                cout << "    "<<totalLine[storeIn-1] << " left the line\n";
-                totalLine.erase(totalLine.begin() + storeIn);
-                
+                //cout << "    "<<totalLine[storeIn-1] << " left the line\n";
+                cout << "    position number "<<to_string(storeIn)<< " left the line\n";
+
+//I still do not know how I would be able to grab a specific element from the list
+//to either return a data value, or to print out the data at that position.
+//I do see in the solution that there is a way to do so, but it would have required
+//editing the actual class to include it as well.
+
+                //totalLine.erase(totalLine.begin() + storeIn);
+                customerNum--;
             }
 
             //VIP customer joins the line
