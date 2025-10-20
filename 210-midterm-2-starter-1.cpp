@@ -283,8 +283,14 @@ int main()
             boredInLine = rand() % 100 + 1;
             if(boredInLine <= 10)
             {
-                
+                storeIn = rand() % totalLine.size();
+                customers.delete_pos(storeIn);
+                totalLine.erase(totalLine.begin() + storeIn);
             }
+
+            //VIP customer joins the line
+            vip = rand() % 100 + 1;
+            if(vip <= )
 
 
 
