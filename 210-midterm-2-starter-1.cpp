@@ -247,7 +247,23 @@ int main()
         //Variables needed to keep track of things
         int vip;
         int newCustomer;
+        int served;
+        int bored;
+        int boredInLine;
         
+
+        for(int i = 2; i < 20; i++)
+        {
+            cout << "Time step #" << i;
+
+            //Served customer
+            served = rand() % 100 + 1;
+            if(served <= 40)
+            {
+                totalLine -=  ;
+            }
+
+        }
     }
 
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
