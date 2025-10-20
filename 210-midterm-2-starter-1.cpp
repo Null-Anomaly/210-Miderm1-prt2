@@ -215,16 +215,30 @@ int main()
 
     ifstream fin("names.txt");
 
-    if(fin.good())
+    if(fin.good())//Just checks if the file input is good
     {
         DoublyLinkedList customers;
         string tempn;
+        int storeOpen;
+        cout << "Store opens:\n";
+        for(int i = 0; i < 5; i++)//Creates the first five customers based on the line their name is in
+        {
+            storeOpen = rand() % 99 + 1;
+            customers.push_back(storeOpen);
+            for(int j = 0; j < storeOpen; j++)
+            {
+                getline(fin, tempn);
+            }
+            cout << "   " << tempn << " joins the line\n";
+        }
+
+        cout << "   Resulting line:\n";
         for(int i = 0; i < 5; i++)
         {
-            int storeOpen = rand() % 99 + 1;
-            customers.push_back(storeOpen);
-            
+            for(int j = 0; j < )
         }
+
+        
     }
 
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
