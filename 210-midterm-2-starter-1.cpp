@@ -258,7 +258,7 @@ int main()
         int boredInLine;
         
 
-        for(int i = 2; i < 20; i++)
+        for(int i = 2; i < 21; i++)
         {
             cout << "Time step #" << i << "\n";
 
@@ -277,7 +277,7 @@ int main()
                 totalLine.resize(totalLine.size()+1);
                 totalLine[totalLine.size() - 1] = tempn;
                 fin.close();
-                cout << tempn << " joined the line\n";
+                cout <<"    "<< tempn << " joined the line\n";
             }
 
             //Leaves the line before being served
@@ -286,7 +286,7 @@ int main()
             {
                 storeIn = rand() % totalLine.size();
                 customers.delete_pos(storeIn);
-                cout << totalLine[storeIn-1] << " left the line\n";
+                cout << "    "<<totalLine[storeIn-1] << " left the line\n";
                 totalLine.erase(totalLine.begin() + storeIn);
                 
             }
@@ -309,7 +309,7 @@ int main()
                 }
                 totalLine[0] = tempn;
                 fin.close();
-                cout << tempn << " (VIP) joins the front of the line\n";
+                cout <<"    "<< tempn << " (VIP) joins the front of the line\n";
             }
 
             //Served customer
@@ -329,18 +329,23 @@ int main()
             bored = rand() % 100 + 1;
             if(bored <= 20)
             {
-                cout << totalLine[totalLine.size()-1] << " (the rear) left the line";
+                cout <<"    " <<totalLine[totalLine.size()-1] << " (the rear) left the line";
                 customers.pop_back();
                 totalLine.pop_back();
             }
 
+            //Final Line output
+            cout << "   Resulting line:\n";
+            for(int j = 0; j < totalLine.size(); j++)
+            {
+                cout <<"    " << totalLine[j] << "\n";
+            }
+
         }
     }
-
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
-
-    
-    
     
     return 0;
 }
+//Whoops! Couldn't get all the errors. Works on some runs, fails on others, no time to check
+//Also this wound up using Vectors more than the actual DDL since the DDL had no way
+//Of pulling any of the needed data out of it.
