@@ -260,7 +260,7 @@ int main()
 
         for(int i = 2; i < 20; i++)
         {
-            cout << "Time step #" << i;
+            cout << "Time step #" << i << "\n";
 
 
             //Joined the line
@@ -277,7 +277,7 @@ int main()
                 totalLine.resize(totalLine.size()+1);
                 totalLine[totalLine.size() - 1] = tempn;
                 fin.close();
-                cout << tempn << " joined the line";
+                cout << tempn << " joined the line\n";
             }
 
             //Leaves the line before being served
@@ -286,7 +286,7 @@ int main()
             {
                 storeIn = rand() % totalLine.size();
                 customers.delete_pos(storeIn);
-                cout << totalLine[]
+                cout << totalLine[storeIn-1] << " left the line\n";
                 totalLine.erase(totalLine.begin() + storeIn);
                 
             }
@@ -309,15 +309,29 @@ int main()
                 }
                 totalLine[0] = tempn;
                 fin.close();
+                cout << tempn << " (VIP) joins the front of the line\n";
             }
-
-
 
             //Served customer
             served = rand() % 100 + 1;
             if(served <= 40)
             {
-                
+                cout << totalLine[0] << " is served\n";
+                customers.pop_front();
+                for(int j = 0; j < totalLine.size() - 1; j++)
+                {
+                    totalLine[j] = totalLine[j+1];
+                }
+                totalLine.resize(totalLine.size()-1);
+            }
+
+            //Rear of the line leaves
+            bored = rand() % 100 + 1;
+            if(bored <= 20)
+            {
+                cout << totalLine[totalLine.size()-1] << " (the rear) left the line";
+                customers.pop_back();
+                totalLine.pop_back();
             }
 
         }
