@@ -224,21 +224,21 @@ int main()
         //First set of customers variable.
         DoublyLinkedList customers;
         string tempn;
-        int storeOpen;
+        int storeIn;
         vector<string> totalLine;
 
         cout << "Store opens:\n";
         for(int i = 0; i < 5; i++)//Creates the first five customers based on the line their name is in
         {
-            storeOpen = rand() % 100 + 1;
-            customers.push_back(storeOpen);
+            storeIn = rand() % 100 + 1;
+            customers.push_back(storeIn);
             fin.open("names.txt"); //Opens the file back up from the start each time
-            for(int j = 0; j < storeOpen; j++)
+            for(int j = 0; j < storeIn; j++)
             {
                 getline(fin, tempn);
             }
             cout << "   " << tempn << " joins the line\n";
-            
+            totalLine.resize(totalLine.size()+1);
             totalLine[i] = tempn; //Keeps track of the line of names.
             fin.close(); //Hard resets the file.
         }
@@ -264,9 +264,27 @@ int main()
 
 
             //Joined the line
+            newCustomer = rand() % 100 + 1;
+            if(newCustomer <= 60)
+            {
+                fin.open("names.txt");
+                storeIn = rand() % 100 + 1;
+                customers.push_back(storeIn);
+                for(int j = 0; j < storeIn; j++)
+                {
+                    getline(fin,tempn);
+                }
+                totalLine.resize(totalLine.size()+1);
+                totalLine[totalLine.size() - 1] = tempn;
+                fin.close();
+            }
 
-
-
+            //Leaves the line before being served
+            boredInLine = rand() % 100 + 1;
+            if(boredInLine <= 10)
+            {
+                
+            }
 
 
 
